@@ -7,6 +7,10 @@
 # dependencies
 /node_modules
 
+# secrets
+.env
+
+
 # IDEs and editors
 /.idea
 .project
@@ -23,7 +27,6 @@
 !.vscode/launch.json
 !.vscode/extensions.json
 .history/*
-
 
 # misc
 /.sass-cache
