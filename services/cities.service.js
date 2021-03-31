@@ -81,7 +81,7 @@ class CitiesService {
     /**
      * Deletes a City Object.
      * @param {string} id City ID
-     * @returns {Promise<void>}
+     * @returns {Promise<Boolean>}
      */
     async deleteCity(id) {
         const doc = await City.findById(id).exec();
@@ -91,6 +91,7 @@ class CitiesService {
             throw error;
         }
         await doc.deleteOne();
+        return true;
     }
 
 }

@@ -59,6 +59,8 @@ const cities = require('./controllers/cities.controller');
 server.get('/cities', cities.getAllCities);
 server.get('/cities/:id', cities.getCity);
 server.post('/cities', cities.createCity);
+server.put('/cities/:id', cities.updateCity);
+server.del('/cities/:id', cities.deleteCity);
 
 
 //

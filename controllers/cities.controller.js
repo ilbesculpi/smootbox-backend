@@ -117,8 +117,8 @@ module.exports.deleteCity = async (req, res, next) => {
     }
 
     try {
-        const city = await recipesService.deleteCity(id);
-        res.send(200, city);
+        const result = await citiesService.deleteCity(id);
+        res.send(200, { result });
         next();
     }
     catch(error) {
