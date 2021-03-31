@@ -21,6 +21,7 @@
   "devDependencies": {
     "chalk": "^4.1.0",
     "inquirer": "^8.0.0",
-    "jasmine": "^3.7.0"
+    "jasmine": "^3.7.0",
+    "jasmine-spec-reporter": "^6.0.0"
   }
 }
