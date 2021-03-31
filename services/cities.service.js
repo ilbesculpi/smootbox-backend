@@ -1,35 +1,39 @@
 const mongoose = require('mongoose');
-const { User: UserModel } = require('../models');
-const User = UserModel.Model;
+const { City: CityModel } = require('../models');
+const City = CityModel.Model;
 
-class UsersService {
+class CitiesService {
 
     constructor(db) {
         this.db = db;
     }
 
-    async getAllUsers() {
-        const users = await User.find().exec();
-        return users;
+    /**
+     * Retrieves a list of all the [Cities].
+     * @returns {Promise<Document[]>}
+     */
+    async getAllCities() {
+        const cities = await City.find().exec();
+        return cities;
     }
 
     /**
-     * Retrieves a User record by ID.
+     * Retrieves a City by ID.
      * @param {string} id
      * @returns {Promise<Document>}
      */
-    async getUser(id) {
-        const doc = await User.findById(id).exec();
+    async getCity(id) {
+        const doc = await City.findById(id).exec();
         return doc;
     }
 
     /**
-     * Creates a new User account.
+     * Creates a new City Object.
      * @param {*} data
      * @returns {Promise<Document>}
      */
-    async createUser(data) {
-        const doc = new User(data);
+    async createCity(data) {
+        const doc = new City(data);
         try {
             await doc.save();
             return doc;
@@ -55,34 +59,34 @@ class UsersService {
     }
 
     /**
-     * Updates a User record on database.
-     * @param {string} id User ID
+     * Updates a City Object.
+     * @param {string} id City ID
      * @param {*} data
      * @returns {Promise<Document>}
      */
-    async updateUser(id, data) {
-        const doc = await User.findById(id).exec();
+    async updateCity(id, data) {
+        const doc = await City.findById(id).exec();
         if( !doc ) {
-            const error = new Error(`Invalid User ID: ${id}.`);
+            const error = new Error(`Invalid City ${id}.`);
             error.code = 404;
             throw error;
         }
         //const updateData = Object.assign(doc.toObject(), data);
-        const user = await User.findOneAndUpdate({ _id: id }, data, {
+        const city = await City.findOneAndUpdate({ _id: id }, data, {
             new: true
         }).exec();
-        return user;
+        return city;
     }
 
     /**
-     * Deletes a User record.
-     * @param {string} id
+     * Deletes a City Object.
+     * @param {string} id City ID
      * @returns {Promise<void>}
      */
-    async deleteUser(id) {
-        const doc = await User.findById(id).exec();
+    async deleteCity(id) {
+        const doc = await City.findById(id).exec();
         if( !doc ) {
-            const error = new Error(`Invalid User ID: ${id}.`);
+            const error = new Error(`Invalid City ${id}.`);
             error.code = 404;
             throw error;
         }
@@ -91,4 +95,4 @@ class UsersService {
 
 }
 
-module.exports = UsersService;
+module.exports = CitiesService;

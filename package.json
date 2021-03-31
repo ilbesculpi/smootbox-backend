@@ -6,7 +6,7 @@
   "scripts": {
     "serve": "nodemon main.js",
     "start": "node main.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jasmine"
   },
   "author": "",
   "license": "ISC",
@@ -20,6 +20,7 @@
   },
   "devDependencies": {
     "chalk": "^4.1.0",
-    "inquirer": "^8.0.0"
+    "inquirer": "^8.0.0",
+    "jasmine": "^3.7.0"
   }
 }

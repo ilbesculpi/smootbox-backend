@@ -1,5 +1,5 @@
-const UsersService = require('./users.service');
+const CitiesService = require('./cities.service');
+module.exports.CitiesService = CitiesService;
 
-module.exports = {
-    UsersService,
-};
+const UsersService = require('./users.service');
+module.exports.UsersService = UsersService;

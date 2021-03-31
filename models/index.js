@@ -1,10 +1,5 @@
-const User = require('./user.model');
+const City = require('./city.model');
+module.exports.City = City;
 
-module.exports = {
-    Models: {
-        User: User.User,
-    },
-    Schema: {
-        User: User.Schema,
-    }
-};
+const User = require('./user.model');
+module.exports.User = User;

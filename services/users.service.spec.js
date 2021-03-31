@@ -3,10 +3,9 @@ const UsersService = require('./users.service');
 
 describe('UsersService', () => {
 
-    describe('getAllUsers()', () => {
-
-        
-
+    it('can be created', () => {
+        const service = new UsersService();
+        expect(service).toBeDefined();
     });
 
 });
