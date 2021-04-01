@@ -1,5 +1,8 @@
-const City = require('./city.model');
-module.exports.City = City;
 
-const User = require('./user.model');
-module.exports.User = User;
+const CityModel = require('./city.model');
+module.exports.CityModel = CityModel;
+module.exports.City = CityModel.Model;
+
+const UserModel = require('./user.model');
+module.exports.UserModel = UserModel;
+module.exports.User = UserModel.Model;

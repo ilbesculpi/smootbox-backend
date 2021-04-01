@@ -1,6 +1,5 @@
 const mongoose = require('mongoose');
-const { City: CityModel } = require('../models');
-const City = CityModel.Model;
+const { City } = require('../models');
 
 class CitiesService {
 

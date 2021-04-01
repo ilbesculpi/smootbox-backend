@@ -54,6 +54,10 @@ server.get('/', (req, res, next) => {
     return next();
 });
 
+// Auth Routes
+const auth = require('./controllers/auth.controller');
+server.post('/auth/login', auth.login);
+
 // City Routes
 const cities = require('./controllers/cities.controller');
 server.get('/cities', cities.getAllCities);

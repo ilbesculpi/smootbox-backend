@@ -13,6 +13,7 @@
   "dependencies": {
     "bcrypt": "^5.0.1",
     "dotenv": "^8.2.0",
+    "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.12.2",
     "restify": "^8.5.1",
     "restify-cors-middleware2": "^2.1.2",
