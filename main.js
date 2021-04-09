@@ -54,22 +54,13 @@ server.get('/', (req, res, next) => {
     return next();
 });
 
-// Auth Routes
-const auth = require('./controllers/auth.controller');
-server.post('/auth/login', auth.login);
+const routes = require('./controllers/routes');
+routes(server);
 
-// City Routes
-const cities = require('./controllers/cities.controller');
-server.get('/cities', cities.getAllCities);
-server.get('/cities/:id', cities.getCity);
-server.post('/cities', cities.createCity);
-server.put('/cities/:id', cities.updateCity);
-server.del('/cities/:id', cities.deleteCity);
 
-// Venue Routes
-const venues = require('./controllers/venues.controller');
-server.get('/cities/:cityId/venues', venues.getCityVenues);
-server.post('/cities/:cityId/venues', venues.createVenue);
+//
+// Routes
+//
 
 
 //

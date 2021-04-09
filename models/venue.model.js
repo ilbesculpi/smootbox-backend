@@ -10,16 +10,14 @@ const Schema = new mongoose.Schema({
         type: String,
         required: [true, `field is required.`]
     },
-    description: {
-        type: String,
-    },
-    pictureUrl: {
-        type: String,
-    },
+    description: String,
+    pictureUrl: String,
     location: {
         lat: Number,
         lng: Number
     },
+    website: String,
+    address: String,
     enabled: {
         type: Boolean,
         default: true
