@@ -19,6 +19,13 @@ module.exports.login = async (req, res, next) => {
         // Extract data from request
         const { email, password } = req.body;
 
+        if( !email || !password ) {
+            const error = new Error('Invalid request.');
+            error.code = 400;
+            error.name = 'ValidationError';
+            throw error;
+        }
+
         // Authenticate user
         const user = await authService.login(email, password);
 
@@ -34,7 +41,7 @@ module.exports.login = async (req, res, next) => {
         return next();
     }
     catch(error) {
-        console.error('Error login user: ', error);
+        console.error('Error login user: ', error.message);
         next(handleError(error));
     }
 };

@@ -7,3 +7,6 @@ module.exports.CitiesService = CitiesService;
 
 const UsersService = require('./users.service');
 module.exports.UsersService = UsersService;
+
+const VenuesService = require('./venues.service');
+module.exports.VenuesService = VenuesService;

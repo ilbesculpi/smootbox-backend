@@ -66,6 +66,11 @@ server.post('/cities', cities.createCity);
 server.put('/cities/:id', cities.updateCity);
 server.del('/cities/:id', cities.deleteCity);
 
+// Venue Routes
+const venues = require('./controllers/venues.controller');
+server.get('/cities/:cityId/venues', venues.getCityVenues);
+server.post('/cities/:cityId/venues', venues.createVenue);
+
 
 //
 // Start Server
