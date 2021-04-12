@@ -1,7 +1,9 @@
 const { CitiesService } = require('../services');
 const { handleError } = require('./controller');
 
-const citiesService = new CitiesService();
+const mongoose = require('mongoose');
+const db = mongoose.connection;
+const citiesService = new CitiesService(db);
 
 /**
  * Handler GET /cities

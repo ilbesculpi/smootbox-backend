@@ -20,7 +20,6 @@ const Schema = new mongoose.Schema({
     }
 }, { timestamps: true });
 
-
 const Model = mongoose.model('City', Schema);
 
 module.exports = {
