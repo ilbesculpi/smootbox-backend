@@ -16,7 +16,7 @@ class VenuesService {
      * @returns {Promise<Venue[]>}
      */
     async getCityVenues(cityId) {
-        const venues = await Venue.find().exec();
+        const venues = await Venue.find({ cityId: cityId }).exec();
         return venues;
     }
 
