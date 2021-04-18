@@ -1,5 +1,7 @@
 const mongoose = require('mongoose');
 
+const CITY_PLACEHOLDER = 'https://smootbox-dev-webcontent.s3.amazonaws.com/content/venues/placeholder.png';
+
 const Schema = new mongoose.Schema({
     name: {
         type: String,
@@ -19,6 +21,13 @@ const Schema = new mongoose.Schema({
         type: [mongoose.Schema.Types.ObjectId]
     }
 }, { timestamps: true });
+
+Schema.pre('save', function(next) {
+    if( !this.pictureUrl ) {
+        this.pictureUrl = CITY_PLACEHOLDER;
+    }
+    next();
+});
 
 const Model = mongoose.model('City', Schema);
 
