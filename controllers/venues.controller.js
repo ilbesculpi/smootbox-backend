@@ -7,7 +7,7 @@ const venuesService = new VenuesService(db);
 
 
 /**
- * Handler GET /cities/:cityId/venues
+ * Handles GET /cities/:cityId/venues
  * Response : {Venue[]}
  */
  module.exports.getCityVenues = async (req, res, next) => {
@@ -29,6 +29,38 @@ const venuesService = new VenuesService(db);
     return next();
 };
 
+
+/**
+ * Handles GET /venues/:id
+ * Response : {Venue}
+ */
+module.exports.getVenue = async (req, res, next) => {
+
+    const { id } = req.params;
+
+    if( !id ) {
+        const error = new Error(`Invalid Venue ID.`);
+        error.code = 400;
+        return next(handleError(error));
+    }
+
+    try {
+        const venue = await venuesService.getVenue(id);
+        if( !venue ) {
+            const error = new Error(`Invalid Venue ${id}.`);
+            error.code = 404;
+            return next(handleError(error));
+        }
+        res.send(200, venue.toJSON());
+    }
+    catch(error) {
+        console.error('Error retrieving venue: ', error);
+        next(handleError(error));
+    }
+    return next();
+};
+
+
 /**
  * Handles POST /cities/:cityId/venues
  * req.body: venue data
@@ -45,6 +77,62 @@ const venuesService = new VenuesService(db);
     }
     catch(error) {
         console.error('Error creating venue: ', error);
+        next(handleError(error));
+    }
+};
+
+
+/**
+ * Handles PUT /venues/:id
+ * req.body: venue data
+ * Response : {Venue}
+ */
+ module.exports.updateVenue = async (req, res, next) => {
+
+    const { id } = req.params;
+
+    if( !id ) {
+        const error = new Error(`Invalid Venue ID.`);
+        error.code = 400;
+        return next(handleError(error));
+    }
+
+    try {
+        const data = req.body;
+        const venue = await venuesService.updateVenue(id, data);
+        res.send(200, venue);
+        next();
+    }
+    catch(error) {
+        console.error('Error updating venue: ', error);
+        next(handleError(error));
+    }
+};
+
+
+/**
+ * Handles DELETE /venues/:id
+ * @param {Request} req
+ * @param {Response} res
+ * @param {*} next
+ */
+module.exports.deleteVenue = async (req, res, next) => {
+
+    const { id } = req.params;
+
+    if( !id ) {
+        const error = new Error(`Invalid Venue ID.`);
+        error.code = 400;
+        return next(handleError(error));
+    }
+
+    try {
+        const result = await venuesService.deleteVenue(id);
+        res.send(200, { result });
+        next();
+    }
+    catch(error) {
+        console.error('Error deleting venue: ', error);
         next(handleError(error));
     }
 };

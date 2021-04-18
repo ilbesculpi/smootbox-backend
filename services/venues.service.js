@@ -16,7 +16,7 @@ class VenuesService {
      * @returns {Promise<Venue[]>}
      */
     async getCityVenues(cityId) {
-        const venues = await Venue.find().exec();
+        const venues = await Venue.find({ cityId: cityId }).exec();
         return venues;
     }
 
@@ -47,8 +47,42 @@ class VenuesService {
         city.venues.push(venueId);
         await city.save();
 
-        //const doc = await Venue.findById(venueId).exec();
         return doc;
+    }
+
+    /**
+     * Updates a Venue Object.
+     * @param {string} id Venue ID
+     * @param {*} data
+     * @returns {Promise<Venue>}
+     */
+     async updateVenue(id, data) {
+        const doc = await Venue.findById(id).exec();
+        if( !doc ) {
+            const error = new Error(`Invalid Venue ${id}.`);
+            error.code = 404;
+            throw error;
+        }
+        const venue = await Venue.findOneAndUpdate({ _id: id }, data, {
+            new: true
+        }).exec();
+        return venue;
+    }
+
+    /**
+     * Deletes a Venue Object.
+     * @param {string} id Venue ID
+     * @returns {Promise<Boolean>}
+     */
+    async deleteVenue(id) {
+        const doc = await Venue.findById(id).exec();
+        if( !doc ) {
+            const error = new Error(`Invalid Venue ${id}.`);
+            error.code = 404;
+            throw error;
+        }
+        await doc.deleteOne();
+        return true;
     }
 
 }
