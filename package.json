@@ -11,19 +11,19 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@aws-sdk/client-s3": "^3.3.0",
-    "@aws-sdk/types": "^3.3.0",
+    "@aws-sdk/client-s3": "^3.18.0",
+    "@aws-sdk/types": "^3.18.0",
     "bcrypt": "^5.0.1",
-    "dotenv": "^8.2.0",
+    "dotenv": "^8.6.0",
     "jsonwebtoken": "^8.5.1",
-    "mongoose": "^5.12.2",
+    "mongoose": "^5.12.14",
     "restify": "^8.5.1",
     "restify-cors-middleware2": "^2.1.2",
     "restify-errors": "^8.0.2"
   },
   "devDependencies": {
-    "chalk": "^4.1.0",
-    "inquirer": "^8.0.0",
+    "chalk": "^4.1.1",
+    "inquirer": "^8.1.1",
     "jasmine": "^3.7.0",
     "jasmine-spec-reporter": "^6.0.0"
   }
