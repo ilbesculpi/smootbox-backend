@@ -5,6 +5,14 @@ const media = require('./media.controller');
 
 module.exports = (server) => {
 
+    // Home Dummy Route
+    server.get('/', (req, res, next) => {
+        res.send({
+            message: 'Hello world!'
+        });
+        return next();
+    });
+
     //#region Auth Routes
     server.post('/auth/login', auth.login);
     //#endregion
